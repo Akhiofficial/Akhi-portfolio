@@ -19,7 +19,7 @@ const About = () => {
                         <div className="z-10 relative">
                             <User className="text-[#00FF9C] mb-8 w-10 h-10" />
                             <p className="text-xl md:text-2xl font-medium leading-[1.4] text-white/80">
-                                Hello! I'm Akhi, a Full Stack Developer passionate about crafting seamless digital experiences.
+                                Hello! I'm Akhilesh, a Full Stack Developer passionate about crafting seamless digital experiences.
                                 My journey started with a fascination for how the web works, which evolved into building scalable
                                 applications for campuses, cities, and movie enthusiasts.
                             </p>

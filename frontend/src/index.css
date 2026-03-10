@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Inter:wght@400;500;700;900&display=swap');
+@import "tailwindcss";
 
 @layer base {
   :root {

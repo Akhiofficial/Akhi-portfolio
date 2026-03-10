@@ -84,7 +84,7 @@ const ContactPage = () => {
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="flex items-center justify-between p-6 border border-white/5 hover:border-white/10 rounded-sm bg-white/[0.02] transition-all group"
+                            className="flex items-center justify-between p-6 border border-white/5 hover:border-white/10 rounded-sm bg-white/2 transition-all group"
                         >
                             <div className="flex items-center gap-6">
                                 <div className="p-4 bg-[#111] rounded-sm text-white/60 group-hover:text-white transition-colors">

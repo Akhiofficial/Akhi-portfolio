@@ -91,7 +91,7 @@ const AboutPage = () => {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: i * 0.1 }}
-                            className="group grid grid-cols-1 md:grid-cols-3 gap-8 py-12 border-b border-white/5 hover:bg-white/[0.02] transition-colors"
+                            className="group grid grid-cols-1 md:grid-cols-3 gap-8 py-12 border-b border-white/5 hover:bg-white/2 transition-colors"
                         >
                             <span className="text-sm font-mono text-subtext">{exp.year}</span>
                             <div className="space-y-1">
