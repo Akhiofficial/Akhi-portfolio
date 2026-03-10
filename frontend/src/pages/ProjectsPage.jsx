@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Navbar from '../components/Navbar'
 import ProjectCard from '../components/ProjectCard'
+import HorizontalProjects from '../components/HorizontalProjects'
 import Footer from '../components/Footer'
 import { projects } from '../data/projects'
 
@@ -55,13 +56,13 @@ const ProjectsPage = () => {
                 </div>
             </section>
 
-            {/* Projects Stacking List */}
-            <section className="relative z-10 py-20">
-                <div className="flex flex-col">
-                    {projects.map((project, index) => (
-                        <ProjectCard key={project.id} project={project} index={index} />
-                    ))}
+            {/* Horizontal Projects Showcase */}
+            <section className="relative z-10 py-20 pb-40">
+                <div className="flex items-center gap-4 mb-16">
+                    <span className="text-[10px] font-mono text-subtext uppercase tracking-[0.3em]">.showcase</span>
+                    <div className="h-[0.5px] grow bg-white/10" />
                 </div>
+                <HorizontalProjects />
             </section>
 
             <Footer />

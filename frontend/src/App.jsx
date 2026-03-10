@@ -6,12 +6,14 @@ import ProjectsPage from './pages/ProjectsPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
 import LoadingScreen from './components/LoadingScreen'
+import CustomCursor from './components/CustomCursor'
 
 function App() {
   const [isLoading, setIsLoading] = useState(true)
 
   return (
     <Router>
+      <CustomCursor />
       <AnimatePresence mode="wait">
         {isLoading && (
           <LoadingScreen onComplete={() => setIsLoading(false)} />
