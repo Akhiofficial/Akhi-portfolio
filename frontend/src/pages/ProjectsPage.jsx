@@ -1,69 +1,155 @@
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import Navbar from '../components/Navbar'
 import ProjectCard from '../components/ProjectCard'
-import HorizontalProjects from '../components/HorizontalProjects'
+import ProjectGridCard from '../components/ProjectGridCard'
 import Footer from '../components/Footer'
 import { projects } from '../data/projects'
 
-const ProjectsPage = () => {
-    const containerRef = useRef(null)
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start start", "end end"]
-    })
+gsap.registerPlugin(ScrollTrigger)
 
-    const headerY = useTransform(scrollYProgress, [0, 0.2], [0, -100])
-    const headerOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0])
+const Categories = ["All", "MERN Stack", "WordPress", "Experiments"]
+
+const ProjectsPage = () => {
+    const [activeCategory, setActiveCategory] = useState("All")
+    const containerRef = useRef(null)
+    const heroRef = useRef(null)
+    const filterRef = useRef(null)
+
+    const filteredProjects = activeCategory === "All"
+        ? projects
+        : projects.filter(p => p.category === activeCategory)
+
+    const featuredProjects = filteredProjects.filter(p => p.featured)
+    const gridProjects = filteredProjects.filter(p => !p.featured)
+
+    useGSAP(() => {
+        // Hero Animation
+        const tl = gsap.timeline()
+        tl.from(".hero-title span", {
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.1,
+            ease: "power4.out"
+        })
+            .from(".hero-subtitle", {
+                opacity: 0,
+                y: 20,
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.6")
+            .from(filterRef.current, {
+                opacity: 0,
+                y: 20,
+                duration: 0.8,
+                ease: "power3.out"
+            }, "-=0.4")
+
+    }, { scope: containerRef })
 
     return (
-        <div ref={containerRef} className="relative min-h-screen bg-black text-white px-6 md:px-12">
+        <div ref={containerRef} className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
             <Navbar />
 
-            {/* Cinematic Header Section */}
-            <motion.section
-                style={{ y: headerY, opacity: headerOpacity }}
-                className="pt-40 pb-20 sticky top-0 z-0"
-            >
-                <div className="flex items-center gap-4 mb-8">
-                    <span className="text-[10px] font-mono text-subtext uppercase tracking-[0.3em]">.archive</span>
+            {/* Hero Section */}
+            <section ref={heroRef} className="pt-44 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+                <div className="flex items-center gap-4 mb-8 overflow-hidden">
+                    <motion.span
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em]"
+                    >
+                        .selected work
+                    </motion.span>
                     <div className="h-[0.5px] grow bg-white/10" />
                 </div>
 
-                <h1 className="text-[clamp(3.5rem,8vw,8rem)] font-bold tracking-tighter leading-[0.9] mb-20 max-w-4xl">
-                    projects
+                <h1 className="hero-title text-[clamp(3.5rem,10vw,9rem)] font-bold tracking-tighter leading-[0.85] mb-12">
+                    {["Selected", "Work"].map((word, i) => (
+                        <span key={i} className="inline-block mr-4">
+                            {word}
+                        </span>
+                    ))}
                 </h1>
 
-                <p className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-tight max-w-5xl text-white/90">
-                    I help startups and series A—D teams to establish a strong connection between their product and customers
+                <p className="hero-subtitle text-xl md:text-2xl text-white/60 max-w-2xl leading-relaxed">
+                    A collection of my projects across MERN stack, WordPress, and experimental builds.
                 </p>
-            </motion.section>
+            </section>
 
-            {/* Clients Grid Section */}
-            <section className="relative z-10 py-32 border-y border-white/5 bg-black">
-                <div className="flex items-center gap-4 mb-16">
-                    <span className="text-[10px] font-mono text-subtext uppercase tracking-[0.3em]">.clients</span>
-                    <div className="h-[0.5px] grow bg-white/10" />
+            {/* Filter Section */}
+            <section ref={filterRef} className="sticky top-20 z-40 bg-black/80 backdrop-blur-xl border-y border-white/5 py-6 mb-20">
+                <div className="px-6 md:px-12 max-w-7xl mx-auto flex flex-wrap gap-4 items-center">
+                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest mr-4">Filter By</span>
+                    <div className="flex flex-wrap gap-2">
+                        {Categories.map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => setActiveCategory(cat)}
+                                className={`px-6 py-2 rounded-full text-xs font-mono uppercase tracking-widest transition-all duration-300 border ${activeCategory === cat
+                                        ? "bg-white text-black border-white"
+                                        : "bg-transparent text-white/60 border-white/10 hover:border-white/30"
+                                    }`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
                 </div>
+            </section>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-12 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-                    {/* Placeholder Client Logos */}
-                    {['лого', 'LOGO!', 'LOOO', 'IPSUM', '///', 'logoipsum', 'logo-ipsum', '(@)'].map((logo, i) => (
-                        <div key={i} className="flex justify-center items-center h-20 text-2xl font-black italic tracking-tighter">
-                            {logo}
+            {/* Main Content */}
+            <main className="px-6 md:px-12 max-w-7xl mx-auto pb-40">
+
+                {/* Featured Projects (Top 3) */}
+                {featuredProjects.length > 0 && (
+                    <div className="space-y-32 mb-40">
+                        {featuredProjects.map((project, index) => (
+                            <div key={project.id} className="featured-project-proxy">
+                                {/* Using Horizontal = false for stacking effect */}
+                                <ProjectCard project={project} index={index} isHorizontal={false} />
+                            </div>
+                        ))}
+                    </div>
+                )}
+
+                {/* Grid Projects */}
+                {gridProjects.length > 0 && (
+                    <div>
+                        <div className="flex items-center gap-4 mb-16">
+                            <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em]">.more projects</span>
+                            <div className="h-[0.5px] grow bg-white/10" />
                         </div>
-                    ))}
-                </div>
-            </section>
 
-            {/* Horizontal Projects Showcase */}
-            <section className="relative z-10 py-20 pb-40">
-                <div className="flex items-center gap-4 mb-16">
-                    <span className="text-[10px] font-mono text-subtext uppercase tracking-[0.3em]">.showcase</span>
-                    <div className="h-[0.5px] grow bg-white/10" />
-                </div>
-                <HorizontalProjects />
-            </section>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                            <AnimatePresence mode="popLayout">
+                                {gridProjects.map((project) => (
+                                    <motion.div
+                                        key={project.id}
+                                        layout
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        exit={{ opacity: 0, scale: 0.9 }}
+                                        transition={{ duration: 0.4 }}
+                                    >
+                                        <ProjectGridCard project={project} />
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </div>
+                    </div>
+                )}
+
+                {filteredProjects.length === 0 && (
+                    <div className="py-40 text-center">
+                        <p className="text-white/40 font-mono uppercase tracking-widest">No projects found in this category.</p>
+                    </div>
+                )}
+            </main>
 
             <Footer />
         </div>
@@ -71,3 +157,4 @@ const ProjectsPage = () => {
 }
 
 export default ProjectsPage
+
