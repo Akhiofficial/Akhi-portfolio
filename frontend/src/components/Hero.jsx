@@ -75,18 +75,18 @@ const Hero = () => {
                     transition={{ delay: 0.5, duration: 1 }}
                     className="text-[10px] font-mono text-subtext uppercase tracking-[0.5em] mb-12 block"
                 >
-                    Hey, I'm Akhi
+                    HEY, I'M AKHILESH
                 </motion.span>
 
                 <div className="flex flex-col gap-2">
                     <motion.h1 variants={lineVariants} className="text-[clamp(3.5rem,9vw,9rem)] font-bold leading-[0.85] tracking-[-0.05em] text-white text-glow">
-                        a product design
+                        a full-stack developer
                     </motion.h1>
                     <motion.h1 variants={lineVariants} className="text-[clamp(3.5rem,9vw,9rem)] font-bold leading-[0.85] tracking-[-0.05em] text-white text-glow">
-                        partner with focus on
+                        building modern
                     </motion.h1>
                     <motion.h1 variants={lineVariants} className="text-[clamp(3.5rem,9vw,9rem)] font-bold leading-[0.85] tracking-[-0.05em] text-white text-glow">
-                        no-code websites
+                        web applications
                     </motion.h1>
                 </div>
 
@@ -94,21 +94,21 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 2.5, duration: 1 }}
-                    className="flex flex-wrap gap-8 mt-20"
+                    className="flex flex-wrap gap-8 mt-12 md:mt-20"
                 >
                     <motion.button
                         whileHover={{ scale: 1.05, backgroundColor: '#00FF9C', color: '#000' }}
                         whileTap={{ scale: 0.95 }}
                         className="bg-[#00FF9C] text-black px-12 py-5 rounded-full font-bold text-lg shadow-[0_0_50px_rgba(0,255,156,0.2)] transition-colors"
                     >
-                        View Projects
+                        Explore Projects
                     </motion.button>
                     <motion.button
                         whileHover={{ scale: 1.05, borderColor: '#fff' }}
                         whileTap={{ scale: 0.95 }}
                         className="border border-white/10 text-white/60 hover:text-white px-12 py-5 rounded-full font-bold text-lg transition-all"
                     >
-                        Get in touch
+                        Contact Me
                     </motion.button>
                 </motion.div>
             </motion.div>

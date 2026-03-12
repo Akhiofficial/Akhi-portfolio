@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { Send, Github, Linkedin, Mail } from 'lucide-react'
+import ContactForm from './ContactForm'
 
 const Contact = () => {
     return (
@@ -50,42 +51,7 @@ const Contact = () => {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="bg-white/5 border border-white/10 p-10 md:p-12 rounded-[40px] shadow-2xl backdrop-blur-sm"
                 >
-                    <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-mono text-subtext uppercase tracking-[0.2em] ml-2">Name</label>
-                            <input
-                                type="text"
-                                placeholder="Enter your name"
-                                className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-[#00FF9C]/50 transition-colors"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-mono text-subtext uppercase tracking-[0.2em] ml-2">Email Address</label>
-                            <input
-                                type="email"
-                                placeholder="name@email.com"
-                                className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-[#00FF9C]/50 transition-colors"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-mono text-subtext uppercase tracking-[0.2em] ml-2">Message</label>
-                            <textarea
-                                rows="4"
-                                placeholder="Tell me about your project..."
-                                className="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-[#00FF9C]/50 transition-colors resize-none"
-                            />
-                        </div>
-
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full bg-[#00FF9C] text-black py-5 rounded-2xl font-bold flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,255,156,0.2)]"
-                        >
-                            Send Message <Send className="w-4 h-4" />
-                        </motion.button>
-                    </form>
+                    <ContactForm />
                 </motion.div>
             </div>
         </section>

@@ -17,14 +17,13 @@ const SayHello = () => {
                 className="max-w-5xl"
             >
                 <h2 className="text-[clamp(2.5rem,6vw,6rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white mb-24">
-                    i'm open for freelance projects, feel
-                    free to email me to see how can we
-                    collaborate
+                    I'm open to internship opportunities, freelance projects, and collaborations.
+                    Feel free to reach out if you'd like to build something together.
                 </h2>
 
                 <div className="flex justify-center md:justify-start">
                     <motion.a
-                        href="mailto:contact@akhi.design"
+                        href="mailto:akhileshmandawganeofficial@gmail.com"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className="group relative inline-flex items-center gap-3 px-12 py-6 border border-white/10 rounded-sm hover:border-white/20 transition-colors bg-white/2"

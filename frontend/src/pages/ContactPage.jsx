@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import ContactForm from '../components/ContactForm'
 import { Twitter, Instagram, Youtube, Send, ArrowUpRight } from 'lucide-react'
+import { href, Link } from 'react-router-dom'
 
 const ContactPage = () => {
     const socials = [
@@ -44,34 +47,9 @@ const ContactPage = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
+                    className="bg-white/5 border border-white/10 p-10 md:p-12 rounded-[40px] shadow-2xl backdrop-blur-sm"
                 >
-                    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                        <div className="space-y-4">
-                            <input
-                                type="text"
-                                placeholder="Name"
-                                className="w-full bg-[#111] border-none px-8 py-6 rounded-sm text-white placeholder:text-white/30 focus:ring-1 focus:ring-white/20 transition-all outline-none"
-                            />
-                            <input
-                                type="email"
-                                placeholder="Email"
-                                className="w-full bg-[#111] border-none px-8 py-6 rounded-sm text-white placeholder:text-white/30 focus:ring-1 focus:ring-white/20 transition-all outline-none"
-                            />
-                            <textarea
-                                rows="6"
-                                placeholder="Message"
-                                className="w-full bg-[#111] border-none px-8 py-6 rounded-sm text-white placeholder:text-white/30 focus:ring-1 focus:ring-white/20 transition-all outline-none resize-none"
-                            />
-                        </div>
-
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
-                            className="w-full bg-white text-black py-6 rounded-sm font-bold text-sm tracking-[0.2em] uppercase transition-all hover:bg-white/90"
-                        >
-                            Submit
-                        </motion.button>
-                    </form>
+                    <ContactForm />
                 </motion.div>
 
                 {/* Right Side: Social Media Grid */}
