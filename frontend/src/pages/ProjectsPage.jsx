@@ -11,7 +11,7 @@ import { projects } from '../data/projects'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Categories = ["All", "MERN Stack", "WordPress", "Experiments"]
+const Categories = ["All", "MERN Stack", "WordPress", "PHP", "Experiments"]
 
 const ProjectsPage = () => {
     const [activeCategory, setActiveCategory] = useState("All")
@@ -56,7 +56,7 @@ const ProjectsPage = () => {
             <Navbar />
 
             {/* Hero Section */}
-            <section ref={heroRef} className="pt-44 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+            <section ref={heroRef} className="pt-32 md:pt-44 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
                 <div className="flex items-center gap-4 mb-8 overflow-hidden">
                     <motion.span
                         initial={{ x: -20, opacity: 0 }}
@@ -68,7 +68,7 @@ const ProjectsPage = () => {
                     <div className="h-[0.5px] grow bg-white/10" />
                 </div>
 
-                <h1 className="hero-title text-[clamp(3.5rem,10vw,9rem)] font-bold tracking-tighter leading-[0.85] mb-12">
+                <h1 className="hero-title text-[clamp(2.5rem,10vw,9rem)] font-bold tracking-tighter leading-[0.85] mb-12">
                     {["Selected", "Work"].map((word, i) => (
                         <span key={i} className="inline-block mr-4">
                             {word}
@@ -83,14 +83,14 @@ const ProjectsPage = () => {
 
             {/* Filter Section */}
             <section ref={filterRef} className="sticky top-20 z-40 bg-black/80 backdrop-blur-xl border-y border-white/5 py-6 mb-20">
-                <div className="px-6 md:px-12 max-w-7xl mx-auto flex flex-wrap gap-4 items-center">
-                    <span className="text-[10px] font-mono text-white/30 uppercase tracking-widest mr-4">Filter By</span>
-                    <div className="flex flex-wrap gap-2">
+                <div className="px-6 md:px-12 max-w-7xl mx-auto flex items-center">
+                    <span className="hidden sm:inline-block text-[10px] font-mono text-white/30 uppercase tracking-widest mr-8">Filter By</span>
+                    <div className="flex flex-nowrap overflow-x-auto gap-2 no-scrollbar pb-1">
                         {Categories.map((cat) => (
                             <button
                                 key={cat}
                                 onClick={() => setActiveCategory(cat)}
-                                className={`px-6 py-2 rounded-full text-xs font-mono uppercase tracking-widest transition-all duration-300 border ${activeCategory === cat
+                                className={`whitespace-nowrap px-6 py-2 rounded-full text-[10px] font-mono uppercase tracking-widest transition-all duration-300 border ${activeCategory === cat
                                         ? "bg-white text-black border-white"
                                         : "bg-transparent text-white/60 border-white/10 hover:border-white/30"
                                     }`}

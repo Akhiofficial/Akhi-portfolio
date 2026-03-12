@@ -3,15 +3,29 @@ import { motion } from 'framer-motion'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import ContactForm from '../components/ContactForm'
-import { Twitter, Instagram, Youtube, Send, ArrowUpRight } from 'lucide-react'
-import { href, Link } from 'react-router-dom'
+import { Linkedin, Github, Instagram, Send, ArrowUpRight } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const ContactPage = () => {
     const socials = [
-        { icon: <Twitter size={20} />, name: "Twitter", handle: "@akhi.dev" },
-        { icon: <Instagram size={20} />, name: "Instagram", handle: "@akhi.sco" },
-        { icon: <div className="w-5 h-5 flex items-center justify-center font-bold text-[10px] border border-white/40 rounded-sm">Tk</div>, name: "TikTok", handle: "@akhi.sco" },
-        { icon: <Youtube size={20} />, name: "YouTube", handle: "@akhi.sco" }
+        { 
+            icon: <Linkedin size={20} />, 
+            name: "LinkedIn", 
+            handle: "akhilesh-mandawgane", 
+            link: "https://www.linkedin.com/in/akhilesh-mandawgane-a1883b283" 
+        },
+        { 
+            icon: <Github size={20} />, 
+            name: "GitHub", 
+            handle: "Akhiofficial", 
+            link: "https://github.com/Akhiofficial" 
+        },
+        { 
+            icon: <Instagram size={20} />, 
+            name: "Instagram", 
+            handle: "akhilesh_mandawgane", 
+            link: "https://www.instagram.com/akhilesh_mandawgane/" 
+        }
     ]
 
     return (
@@ -23,18 +37,18 @@ const ContactPage = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="pt-40 pb-20"
+                className="pt-32 md:pt-40 pb-20"
             >
                 <div className="flex items-center gap-4 mb-8">
-                    <span className="text-[10px] font-mono text-subtext uppercase tracking-[0.3em]">.say hello</span>
+                    <span className="text-[10px] font-mono text-white/40 uppercase tracking-[0.3em]">.say hello</span>
                     <div className="h-[0.5px] grow bg-white/10" />
                 </div>
 
-                <h1 className="text-[clamp(3.5rem,8vw,8rem)] font-bold tracking-tighter leading-[0.9] mb-20 max-w-4xl">
+                <h1 className="text-[clamp(2.5rem,8vw,8rem)] font-bold tracking-tighter leading-[0.8] mb-12 md:mb-20 max-w-4xl uppercase">
                     say hello
                 </h1>
 
-                <p className="text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-tight max-w-5xl text-white/90">
+                <p className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] max-w-5xl text-white/90">
                     let's collaborate. feel free to drop me a line about your project or follow me on social networks
                 </p>
             </motion.section>
@@ -57,7 +71,9 @@ const ContactPage = () => {
                     {socials.map((social, i) => (
                         <motion.a
                             key={i}
-                            href="#"
+                            href={social.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}

@@ -38,7 +38,7 @@ const ProjectGridCard = ({ project }) => {
             ref={cardRef}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            className="group relative bg-[#0A0A0A] border border-white/5 rounded-3xl overflow-hidden transition-colors hover:border-white/20"
+            className="group relative bg-[#0A0A0A] border border-white/5 rounded-3xl overflow-hidden transition-all duration-500 hover:border-white/20 hover:-translate-y-2 shadow-xl hover:shadow-2xl"
         >
             <div className="aspect-16/10 overflow-hidden relative">
                 <img
@@ -56,26 +56,39 @@ const ProjectGridCard = ({ project }) => {
             </div>
 
             <div className="p-6">
-                <div className="flex justify-between items-start mb-4">
-                    <div>
+                <div className="flex justify-between items-center gap-4 mb-4">
+                    <div className="flex-1 min-w-0">
                         <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest mb-1 block">{project.year}</span>
-                        <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors">{project.title}</h3>
+                        <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors leading-tight truncate">{project.title}</h3>
+                        {project.subtitle && (
+                            <p className="text-[10px] font-mono text-white/30 uppercase tracking-wider mt-1 line-clamp-1">{project.subtitle}</p>
+                        )}
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 shrink-0">
                         <Magnetic>
-                            <a href={project.github} className="p-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all">
-                                <Github className="w-4 h-4 text-white/60" />
+                            <a 
+                                href={project.github} 
+                                className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full transition-all group/btn"
+                                title="View Code"
+                            >
+                                <Github className="w-3.5 h-3.5 text-white/60 group-hover/btn:text-white" />
+                                <span className="text-[10px] font-bold text-white/60 group-hover/btn:text-white uppercase">CODE</span>
                             </a>
                         </Magnetic>
                         <Magnetic>
-                            <a href={project.link} className="p-2 bg-white text-black border border-white/10 rounded-full transition-all">
-                                <ArrowUpRight className="w-4 h-4" />
+                            <a 
+                                href={project.link} 
+                                className="flex items-center gap-1.5 px-3 py-1.5 bg-white text-black border border-white/10 rounded-full transition-all hover:scale-105"
+                                title="Live Demo"
+                            >
+                                <ArrowUpRight className="w-3.5 h-3.5" />
+                                <span className="text-[10px] font-bold uppercase">DEMO</span>
                             </a>
                         </Magnetic>
                     </div>
                 </div>
 
-                <p className="text-sm text-white/60 line-clamp-2 mb-6">
+                <p className="text-sm text-white/60 line-clamp-2 mb-6 leading-relaxed">
                     {project.description}
                 </p>
 

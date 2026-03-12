@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react'
-import { Github, ExternalLink } from 'lucide-react'
+import { Github, ArrowUpRight } from 'lucide-react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
 import Magnetic from './Magnetic'
+
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -148,8 +149,8 @@ const ProjectCard = ({ project, index, isHorizontal = false }) => {
                 />
 
                 {/* Header info */}
-                <div className="px-8 md:px-12 pt-8 pb-4 relative z-20">
-                    <div className="flex justify-between items-center text-[10px] md:text-sm font-mono text-white/60 uppercase tracking-widest mb-4">
+                <div className="px-6 md:px-12 pt-6 md:pt-8 pb-4 relative z-20">
+                    <div className="flex justify-between items-center text-[8px] md:text-sm font-mono text-white/60 uppercase tracking-widest mb-4">
                         <span>{project.year}</span>
                         <span>{project.category}</span>
                     </div>
@@ -157,42 +158,47 @@ const ProjectCard = ({ project, index, isHorizontal = false }) => {
                 </div>
 
                 {/* Title and Description */}
-                <div className="px-8 md:px-12 py-6 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start relative z-20">
+                <div className="px-6 md:px-12 py-4 md:py-6 grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-8 items-start relative z-20">
                     <div>
-                        <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-none mb-6">
-                            {project.title}
-                        </h2>
-                        <div className="flex flex-wrap gap-2 mb-6">
+                        <div className="mb-4">
+                            <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white leading-[0.9]">
+                                {project.title}
+                            </h2>
+                            {project.subtitle && (
+                                <p className="text-[10px] md:text-base font-mono text-white/40 mt-2 md:mt-3 uppercase tracking-[0.2em]">{project.subtitle}</p>
+                            )}
+                        </div>
+                        <div className="flex flex-wrap gap-2 mb-4 md:mb-6">
                             {project.tags.map((tag, i) => (
-                                <span key={i} className="text-[10px] font-mono uppercase bg-white/10 px-3 py-1 rounded-full text-white/80">
+                                <span key={i} className="text-[8px] md:text-[10px] font-mono uppercase bg-white/10 px-2 md:px-3 py-1 rounded-full text-white/80">
                                     {tag}
                                 </span>
                             ))}
                         </div>
                     </div>
 
-                    <div className="flex flex-col justify-between h-full py-2">
-                        <p className="text-white/70 text-sm md:text-base font-medium max-w-sm leading-relaxed mb-8">
+                    <div className="flex flex-col justify-between h-full py-0 md:py-2">
+                        <p className="text-white/70 text-xs md:text-base font-medium max-w-sm leading-relaxed mb-4 md:mb-8">
                             {project.description}
                         </p>
 
-                        <div className="flex gap-4">
+                         <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-auto">
                             <Magnetic>
                                 <a
                                     href={project.github}
                                     data-cursor="pointer"
-                                    className="flex items-center gap-2 bg-black/40 hover:bg-black/60 px-5 py-2.5 rounded-full text-xs font-mono uppercase tracking-widest transition-all border border-white/10"
+                                    className="flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 px-6 py-3 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all border border-white/10 backdrop-blur-sm w-full sm:w-auto"
                                 >
-                                    <Github className="w-4 h-4" /> Code
+                                    <Github className="w-4 h-4" /> CODE
                                 </a>
                             </Magnetic>
                             <Magnetic>
                                 <a
                                     href={project.link}
                                     data-cursor="pointer"
-                                    className="flex items-center gap-2 bg-white text-black px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all"
+                                    className="flex items-center justify-center gap-2.5 bg-white text-black hover:bg-white/90 px-6 py-3 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest transition-all shadow-lg hover:shadow-white/10 w-full sm:w-auto"
                                 >
-                                    <ExternalLink className="w-4 h-4" /> Demo
+                                    <ArrowUpRight className="w-4 h-4" /> DEMO
                                 </a>
                             </Magnetic>
                         </div>
@@ -200,8 +206,8 @@ const ProjectCard = ({ project, index, isHorizontal = false }) => {
                 </div>
 
                 {/* Mockup area */}
-                <div className="grow px-8 md:px-12 pb-12 mt-4 relative overflow-hidden z-20">
-                    <div className="w-full h-full rounded-[24px] bg-black/20 flex items-center justify-center border border-white/5 overflow-hidden relative shadow-inner">
+                <div className="grow px-6 md:px-12 pb-8 md:pb-12 mt-2 md:mt-4 relative overflow-hidden z-20">
+                    <div className="w-full h-full rounded-[20px] md:rounded-[24px] bg-black/20 flex items-center justify-center border border-white/5 overflow-hidden relative shadow-inner min-h-[150px]">
                         {project.image ? (
                             <img
                                 ref={imageRef}
@@ -210,7 +216,7 @@ const ProjectCard = ({ project, index, isHorizontal = false }) => {
                                 className="w-full h-[130%] object-cover absolute top-[-15%]"
                             />
                         ) : (
-                            <div className="text-white/5 text-[10rem] md:text-[20rem] font-black rotate-[-10deg] tracking-tighter">.nitro</div>
+                            <div className="text-white/5 text-[5rem] md:text-[20rem] font-black rotate-[-10deg] tracking-tighter">.nitro</div>
                         )}
                         <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent pointer-events-none" />
                     </div>

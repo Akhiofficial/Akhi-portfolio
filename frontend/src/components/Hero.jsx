@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Hero = () => {
+    const navigate = useNavigate()
     const containerRef = useRef(null)
     const { scrollY } = useScroll()
 
@@ -79,13 +81,13 @@ const Hero = () => {
                 </motion.span>
 
                 <div className="flex flex-col gap-2">
-                    <motion.h1 variants={lineVariants} className="text-[clamp(3.5rem,9vw,9rem)] font-bold leading-[0.85] tracking-[-0.05em] text-white text-glow">
+                    <motion.h1 variants={lineVariants} className="text-[clamp(2.5rem,9vw,9rem)] font-bold leading-[0.85] tracking-[-0.05em] text-white text-glow">
                         a full-stack developer
                     </motion.h1>
-                    <motion.h1 variants={lineVariants} className="text-[clamp(3.5rem,9vw,9rem)] font-bold leading-[0.85] tracking-[-0.05em] text-white text-glow">
+                    <motion.h1 variants={lineVariants} className="text-[clamp(2.5rem,9vw,9rem)] font-bold leading-[0.85] tracking-[-0.05em] text-white text-glow">
                         building modern
                     </motion.h1>
-                    <motion.h1 variants={lineVariants} className="text-[clamp(3.5rem,9vw,9rem)] font-bold leading-[0.85] tracking-[-0.05em] text-white text-glow">
+                    <motion.h1 variants={lineVariants} className="text-[clamp(2.5rem,9vw,9rem)] font-bold leading-[0.85] tracking-[-0.05em] text-white text-glow">
                         web applications
                     </motion.h1>
                 </div>
@@ -94,19 +96,21 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 2.5, duration: 1 }}
-                    className="flex flex-wrap gap-8 mt-12 md:mt-20"
+                    className="flex flex-col sm:flex-row flex-wrap gap-6 md:gap-8 mt-12 md:mt-20"
                 >
                     <motion.button
                         whileHover={{ scale: 1.05, backgroundColor: '#00FF9C', color: '#000' }}
                         whileTap={{ scale: 0.95 }}
-                        className="bg-[#00FF9C] text-black px-12 py-5 rounded-full font-bold text-lg shadow-[0_0_50px_rgba(0,255,156,0.2)] transition-colors"
+                        onClick={() => navigate('/projects')}
+                        className="w-full sm:w-auto bg-[#00FF9C] text-black px-12 py-5 rounded-full font-bold text-lg shadow-[0_0_50px_rgba(0,255,156,0.2)] transition-colors"
                     >
                         Explore Projects
                     </motion.button>
                     <motion.button
                         whileHover={{ scale: 1.05, borderColor: '#fff' }}
                         whileTap={{ scale: 0.95 }}
-                        className="border border-white/10 text-white/60 hover:text-white px-12 py-5 rounded-full font-bold text-lg transition-all"
+                        onClick={() => navigate('/contact')}
+                        className="w-full sm:w-auto border border-white/10 text-white/60 hover:text-white px-12 py-5 rounded-full font-bold text-lg transition-all"
                     >
                         Contact Me
                     </motion.button>
