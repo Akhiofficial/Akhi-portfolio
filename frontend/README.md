@@ -1,16 +1,31 @@
-# React + Vite
+# Akhi Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-end, immersive portfolio built with React 19, Tailwind CSS 4, GSAP, and Framer Motion.
 
-Currently, two official plugins are available:
+## Features
+- **Immersive Design**: Dark modern theme with smooth animations.
+- **Projects Showcase**: Horizontal scroll layout for viewing projects.
+- **Contact Form**: Powered by Web3Forms for seamless communication.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Deployment on Netlify
 
-## React Compiler
+This project is pre-configured for deployment on [Netlify](https://www.netlify.com/).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Steps to Deploy
+1. **Connect to GitHub**: Link your repository to a new site on Netlify.
+2. **Build Settings**: The project includes a `netlify.toml` file that automatically configures the build settings:
+   - **Base directory**: `frontend`
+   - **Build command**: `npm run build`
+   - **Publish directory**: `dist`
+3. **Environment Variables**:
+   You MUST add the following environment variable in the Netlify dashboard under **Site configuration > Environment variables**:
+   - `VITE_WEBFORM_ACCESS_KEY`: Your Web3Forms access key.
 
-## Expanding the ESLint configuration
+## Development
+To run the project locally:
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
