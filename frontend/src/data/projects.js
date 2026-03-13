@@ -18,7 +18,7 @@ export const projects = [
         tags: ["React.js", "Node.js", "Express.js", "MongoDB", "TMDB API", "Framer Motion"],
         color: "#1E1B4B",
         link: "https://movieplatform-flix.onrender.com",
-        github: "#",
+        github: "https://github.com/Akhiofficial/MoviePlatform-cohort-2.0.git",
         image: movieplatformImg,
         featured: true
     },
@@ -32,7 +32,7 @@ export const projects = [
         tags: ["React.js", "Node.js", "Express.js", "MongoDB"],
         color: "#1E293B",
         link: "https://placemate-pi.vercel.app",
-        github: "#",
+        github: "https://github.com/Akhiofficial/placemate-campus-placement-system.git",
         image: placemateImg,
         featured: true
     },
@@ -46,7 +46,7 @@ export const projects = [
         tags: ["PHP", "MySQL", "JavaScript", "HTML/CSS"],
         color: "#161B22",
         link: "#",
-        github: "#",
+        github: "https://github.com/Akhiofficial/hotel-app.git",
         image: bedNbasicsImg,
         featured: true
     },
